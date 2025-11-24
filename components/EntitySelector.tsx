@@ -34,7 +34,7 @@ export const EntitySelector: React.FC<EntitySelectorProps> = ({ onSelect }) => {
           <div className="inline-flex h-16 w-16 bg-blue-600 rounded-2xl items-center justify-center shadow-lg shadow-blue-600/20 mb-6">
              <span className="text-white font-bold text-2xl">LP</span>
           </div>
-          <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-3">Bem-vindo ao LicitaPlan</h1>
+          <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-3">Bem-vindo ao LicitaPlano</h1>
           <p className="text-slate-500 dark:text-slate-400 text-lg">Selecione a entidade para acessar seu ambiente exclusivo.</p>
         </div>
 
@@ -67,7 +67,7 @@ export const EntitySelector: React.FC<EntitySelectorProps> = ({ onSelect }) => {
 
         <div className="mt-12 text-center">
             <p className="text-xs text-slate-400">
-                LicitaPlan v3.0 • Sistema de Gestão Multi-tenant
+                LicitaPlano v3.0 • Sistema de Gestão Multi-tenant
             </p>
         </div>
       </div>

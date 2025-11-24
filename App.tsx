@@ -215,7 +215,7 @@ const App: React.FC = () => {
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">LP</div>
           <div className="flex flex-col">
-            <h1 className="text-xl font-bold tracking-tight leading-none">LicitaPlan</h1>
+            <h1 className="text-xl font-bold tracking-tight leading-none">LicitaPlano</h1>
             <span className="text-[10px] text-slate-500 font-medium uppercase tracking-wider">{currentEntity.name}</span>
           </div>
         </div>

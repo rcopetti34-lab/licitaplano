@@ -60,7 +60,7 @@ export const Auth: React.FC<AuthProps> = ({ currentEntity, onChangeEntity }) => 
 
       <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-200 dark:border-slate-700">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-800 dark:text-white">LicitaPlan</h1>
+          <h1 className="text-3xl font-bold text-slate-800 dark:text-white">LicitaPlano</h1>
           <p className="text-slate-500 dark:text-slate-400 mt-2">
             {currentEntity ? `Acesso Restrito: ${currentEntity.name}` : 'Gestão de Processos Licitatórios'}
           </p>

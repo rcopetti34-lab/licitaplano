@@ -43,7 +43,7 @@ export const exportToPDF = (processes: Process[]) => {
     headStyles: { fillColor: [41, 128, 185] },
   });
 
-  doc.save('relatorio-licitaplan.pdf');
+  doc.save('relatorio-licitaplano.pdf');
 };
 
 export const exportToExcel = (processes: Process[]) => {
@@ -55,5 +55,5 @@ export const exportToExcel = (processes: Process[]) => {
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, "Processos");
   
-  XLSX.writeFile(workbook, "licitaplan-export.xlsx");
+  XLSX.writeFile(workbook, "licitaplano-export.xlsx");
 };
