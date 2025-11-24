@@ -4,6 +4,13 @@ export const formatDate = (dateString: string | undefined): string => {
   return new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC' }).format(date);
 };
 
+export const formatMonthYear = (value: string): string => {
+  if (!value) return '-';
+  const [year, month] = value.split('-');
+  if (!year || !month) return value;
+  return `${month}/${year}`;
+};
+
 export const calculateElapsedDays = (startStr: string, endStr: string): { total: number; business: number } => {
   // Only calculate if both dates are present
   if (!startStr || !endStr) return { total: 0, business: 0 };
@@ -49,4 +56,29 @@ export const getPriorityColor = (priority: string): string => {
     case 'alta': return 'text-orange-500 font-semibold';
     default: return 'text-gray-600';
   }
+};
+
+export const getConsistentColor = (text: string): string => {
+  if (!text) return 'text-slate-600';
+  
+  // Simple hash function
+  let hash = 0;
+  for (let i = 0; i < text.length; i++) {
+    hash = text.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  
+  // Colors tailored for light/dark mode readability
+  const colors = [
+    'text-blue-600 dark:text-blue-400',
+    'text-emerald-600 dark:text-emerald-400',
+    'text-violet-600 dark:text-violet-400',
+    'text-fuchsia-600 dark:text-fuchsia-400',
+    'text-pink-600 dark:text-pink-400',
+    'text-indigo-600 dark:text-indigo-400',
+    'text-cyan-600 dark:text-cyan-400',
+    'text-amber-600 dark:text-amber-400',
+  ];
+  
+  const index = Math.abs(hash) % colors.length;
+  return colors[index];
 };

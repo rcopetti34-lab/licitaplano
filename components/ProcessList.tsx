@@ -1,7 +1,7 @@
 import React from 'react';
 import { Process, ProcessStatus } from '../types';
 import { Edit, Search, FileDown, Filter, Calendar, Archive, ArchiveRestore } from 'lucide-react';
-import { formatDate, calculateElapsedDays, getStatusColor, getPriorityColor } from '../utils/helpers';
+import { formatDate, formatMonthYear, calculateElapsedDays, getStatusColor, getPriorityColor, getConsistentColor } from '../utils/helpers';
 import { exportToPDF, exportToExcel } from '../utils/export';
 
 interface ProcessListProps {
@@ -141,7 +141,9 @@ export const ProcessList: React.FC<ProcessListProps> = ({
                       </button>
                     </div>
                   </td>
-                  <td className="p-3 whitespace-nowrap font-medium">{p.responsavel_demanda}</td>
+                  <td className={`p-3 whitespace-nowrap font-semibold ${getConsistentColor(p.responsavel_demanda)}`}>
+                    {p.responsavel_demanda}
+                  </td>
                   <td className="p-3 whitespace-nowrap">{p.modalidade}</td>
                   <td className="p-3 min-w-[350px] max-w-[500px] whitespace-normal break-words" title={p.objeto}>{p.objeto}</td>
                   <td className="p-3 whitespace-nowrap">{p.processo_anterior}</td>
@@ -156,7 +158,7 @@ export const ProcessList: React.FC<ProcessListProps> = ({
                       {p.status}
                     </span>
                   </td>
-                  <td className="p-3 whitespace-nowrap">{p.previsao_start}</td>
+                  <td className="p-3 whitespace-nowrap">{formatMonthYear(p.previsao_start)}</td>
                   <td className={`p-3 whitespace-nowrap capitalize ${getPriorityColor(p.prioridade)}`}>{p.prioridade}</td>
                   <td className="p-3 whitespace-nowrap capitalize">{p.prorrogavel}</td>
                   <td className="p-3 whitespace-nowrap">{formatDate(p.inicio_efetivo_planejamento)}</td>
