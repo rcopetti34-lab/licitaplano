@@ -1,6 +1,6 @@
 import React from 'react';
 import { Entity } from '../types';
-import { Building2, ChevronRight, Database } from 'lucide-react';
+import { Building2, ChevronRight } from 'lucide-react';
 
 interface EntitySelectorProps {
   onSelect: (entity: Entity) => void;
@@ -49,14 +49,9 @@ export const EntitySelector: React.FC<EntitySelectorProps> = ({ onSelect }) => {
                 <Building2 className="h-6 w-6" />
               </div>
               
-              <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {entity.name}
               </h3>
-              
-              <div className="flex items-center gap-2 text-xs text-slate-400 mb-4">
-                <Database className="h-3 w-3" />
-                <span>Banco de Dados Isolado</span>
-              </div>
 
               <div className="mt-auto flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
                 Acessar Ambiente <ChevronRight className="h-4 w-4 ml-1" />
