@@ -244,7 +244,7 @@ const App: React.FC = () => {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-hidden flex flex-col max-w-[1920px] mx-auto w-full">
+      <main className="flex-1 p-4 md:p-6 lg:p-8 flex flex-col max-w-[1920px] mx-auto w-full">
         
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -290,11 +290,13 @@ const App: React.FC = () => {
           </button>
         </div>
 
-        {/* Insights (Updates based on filteredProcesses - currently showing stats for the active view) */}
-        <Dashboard stats={stats} />
+        {/* Insights */}
+        <div>
+            <Dashboard stats={stats} />
+        </div>
 
         {/* Data Table */}
-        <div className="flex-1 min-h-0">
+        <div className="mt-4">
           <ProcessList 
             processes={filteredProcesses} 
             onEdit={openEditModal}
