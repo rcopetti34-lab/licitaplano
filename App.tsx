@@ -8,7 +8,7 @@ import { ProcessForm } from './components/ProcessForm';
 import { EntitySelector } from './components/EntitySelector';
 import { Process, DashboardStats, ProcessStatus, Entity } from './types';
 import * as processService from './services/processService';
-import { Plus, Sun, Moon, LogOut, LayoutList, Archive, Building2 } from 'lucide-react';
+import { Plus, Sun, Moon, LogOut, LayoutList, Archive, Building2, Waypoints } from 'lucide-react';
 
 const App: React.FC = () => {
   // 1. Estado da Entidade (Primeira etapa)
@@ -212,8 +212,10 @@ const App: React.FC = () => {
       
       {/* Navbar */}
       <nav className="sticky top-0 z-30 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 px-6 py-3 flex items-center justify-between shadow-sm">
-        <div className="flex items-center gap-2">
-          <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">LP</div>
+        <div className="flex items-center gap-3">
+          <div className="h-9 w-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white shadow-md">
+            <Waypoints className="h-5 w-5" />
+          </div>
           <div className="flex flex-col">
             <h1 className="text-xl font-bold tracking-tight leading-none">LicitaPlano</h1>
             <span className="text-[10px] text-slate-500 font-medium uppercase tracking-wider">{currentEntity.name}</span>

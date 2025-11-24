@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getSupabase } from '../supabaseClient';
-import { Lock, Mail, Loader2, ArrowLeft, AlertTriangle } from 'lucide-react';
+import { Lock, Mail, Loader2, ArrowLeft, AlertTriangle, Waypoints } from 'lucide-react';
 import { Entity } from '../types';
 
 interface AuthProps {
@@ -60,6 +60,11 @@ export const Auth: React.FC<AuthProps> = ({ currentEntity, onChangeEntity }) => 
 
       <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-200 dark:border-slate-700">
         <div className="text-center mb-8">
+          <div className="flex justify-center mb-4">
+            <div className="inline-flex h-12 w-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl items-center justify-center shadow-lg shadow-blue-600/20">
+              <Waypoints className="h-6 w-6 text-white" />
+            </div>
+          </div>
           <h1 className="text-3xl font-bold text-slate-800 dark:text-white">LicitaPlano</h1>
           <p className="text-slate-500 dark:text-slate-400 mt-2">
             {currentEntity ? `Acesso Restrito: ${currentEntity.name}` : 'Gestão de Processos Licitatórios'}

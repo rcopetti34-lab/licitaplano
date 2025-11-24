@@ -1,6 +1,6 @@
 import React from 'react';
 import { Entity } from '../types';
-import { Building2, ChevronRight } from 'lucide-react';
+import { Building2, ChevronRight, Waypoints } from 'lucide-react';
 
 interface EntitySelectorProps {
   onSelect: (entity: Entity) => void;
@@ -27,15 +27,26 @@ const AVAILABLE_ENTITIES: Entity[] = [
 
 export const EntitySelector: React.FC<EntitySelectorProps> = ({ onSelect }) => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 p-4 transition-colors">
-      <div className="w-full max-w-2xl">
+    <div className="relative min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden">
+      
+      {/* Background Image & Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop" 
+          alt="Office Background" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/75 backdrop-blur-[2px]"></div>
+      </div>
+
+      <div className="relative z-10 w-full max-w-2xl">
         
         <div className="text-center mb-10">
-          <div className="inline-flex h-16 w-16 bg-blue-600 rounded-2xl items-center justify-center shadow-lg shadow-blue-600/20 mb-6">
-             <span className="text-white font-bold text-2xl">LP</span>
+          <div className="inline-flex h-20 w-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl items-center justify-center shadow-2xl shadow-blue-500/30 mb-8 ring-4 ring-white/10 transform hover:scale-105 transition-transform duration-500">
+             <Waypoints className="h-10 w-10 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-3">Bem-vindo ao LicitaPlano</h1>
-          <p className="text-slate-500 dark:text-slate-400 text-lg">Selecione a entidade para acessar seu ambiente exclusivo.</p>
+          <h1 className="text-4xl font-bold text-white mb-3 tracking-tight">Bem-vindo ao LicitaPlano</h1>
+          <p className="text-slate-200 text-lg font-light">Selecione a entidade para acessar seu ambiente exclusivo de planejamento.</p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
@@ -43,7 +54,7 @@ export const EntitySelector: React.FC<EntitySelectorProps> = ({ onSelect }) => {
             <button
               key={entity.id}
               onClick={() => onSelect(entity)}
-              className="group relative flex flex-col items-start p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 text-left"
+              className="group relative flex flex-col items-start p-6 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-2xl border border-transparent hover:border-blue-500 transition-all duration-300 text-left shadow-xl"
             >
               <div className="h-12 w-12 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-4 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
                 <Building2 className="h-6 w-6" />
@@ -61,7 +72,7 @@ export const EntitySelector: React.FC<EntitySelectorProps> = ({ onSelect }) => {
         </div>
 
         <div className="mt-12 text-center">
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-400/80">
                 LicitaPlano v3.0 • Sistema de Gestão Multi-tenant
             </p>
         </div>
