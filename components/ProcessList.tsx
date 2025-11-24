@@ -99,6 +99,8 @@ export const ProcessList: React.FC<ProcessListProps> = ({
           <thead className="bg-slate-50 dark:bg-slate-900 text-xs uppercase text-slate-500 font-semibold sticky top-0 z-10">
             <tr>
               <th className="sticky left-0 z-20 bg-slate-50 dark:bg-slate-900 p-3 border-b border-slate-200 dark:border-slate-700 w-24 text-center">Ações</th>
+              <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[140px]">Responsável</th>
+              <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[200px]">Objeto</th>
               <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[120px]">Proc. Anterior</th>
               <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[100px]">Venc. Ant.</th>
               <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[120px]">PCA</th>
@@ -106,8 +108,6 @@ export const ProcessList: React.FC<ProcessListProps> = ({
               <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[100px]">Start</th>
               <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[100px]">Prioridade</th>
               <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[140px]">Modalidade</th>
-              <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[200px]">Objeto</th>
-              <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[140px]">Responsável</th>
               <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[80px]">Prorrog.</th>
               <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[100px]">Início Plan.</th>
               <th className="p-3 border-b border-slate-200 dark:border-slate-700 min-w-[100px]">Fim Plan.</th>
@@ -140,7 +140,9 @@ export const ProcessList: React.FC<ProcessListProps> = ({
                       </button>
                     </div>
                   </td>
-                  <td className="p-3 whitespace-nowrap font-medium">{p.processo_anterior}</td>
+                  <td className="p-3 whitespace-nowrap font-medium">{p.responsavel_demanda}</td>
+                  <td className="p-3 min-w-[200px] truncate" title={p.objeto}>{p.objeto}</td>
+                  <td className="p-3 whitespace-nowrap">{p.processo_anterior}</td>
                   <td className="p-3 whitespace-nowrap">{formatDate(p.vencimento_anterior)}</td>
                   <td className="p-3 whitespace-nowrap">
                     {p.previsao_pca === 'previsto no PCA' ? 
@@ -155,8 +157,6 @@ export const ProcessList: React.FC<ProcessListProps> = ({
                   <td className="p-3 whitespace-nowrap">{p.previsao_start}</td>
                   <td className={`p-3 whitespace-nowrap capitalize ${getPriorityColor(p.prioridade)}`}>{p.prioridade}</td>
                   <td className="p-3 whitespace-nowrap">{p.modalidade}</td>
-                  <td className="p-3 min-w-[200px] truncate" title={p.objeto}>{p.objeto}</td>
-                  <td className="p-3 whitespace-nowrap">{p.responsavel_demanda}</td>
                   <td className="p-3 whitespace-nowrap capitalize">{p.prorrogavel}</td>
                   <td className="p-3 whitespace-nowrap">{formatDate(p.inicio_efetivo_planejamento)}</td>
                   <td className="p-3 whitespace-nowrap">{formatDate(p.termino_efetivo_planejamento)}</td>
