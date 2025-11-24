@@ -11,17 +11,31 @@ export const formatMonthYear = (value: string): string => {
   return `${month}/${year}`;
 };
 
-export const calculateElapsedDays = (startStr: string, endStr: string): { total: number; business: number } => {
-  // Only calculate if both dates are present
-  if (!startStr || !endStr) return { total: 0, business: 0 };
+export const calculateElapsedDays = (startStr: string, endStr: string | null | undefined): { total: number; business: number } => {
+  if (!startStr) return { total: 0, business: 0 };
 
-  const start = new Date(startStr);
-  const end = new Date(endStr);
+  // Helper para converter string YYYY-MM-DD para data local (evita problemas de UTC)
+  const parseLocalDate = (str: string) => {
+    const [y, m, d] = str.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  };
 
-  // Reset hours
-  start.setHours(0, 0, 0, 0);
-  end.setHours(0, 0, 0, 0);
+  const start = parseLocalDate(startStr);
+  
+  if (isNaN(start.getTime())) return { total: 0, business: 0 };
 
+  let end: Date;
+  // Se existir data final e não for string vazia, usa ela
+  if (endStr && endStr.trim() !== '') {
+    end = parseLocalDate(endStr);
+  } else {
+    // Se não tiver data final, considera HOJE
+    const today = new Date();
+    // Normaliza para meia-noite para cálculo de dias inteiros
+    end = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  }
+
+  // Se a data de início for no futuro em relação ao fim/hoje, retorna 0
   if (end < start) return { total: 0, business: 0 };
 
   const diffTime = Math.abs(end.getTime() - start.getTime());
@@ -29,9 +43,12 @@ export const calculateElapsedDays = (startStr: string, endStr: string): { total:
 
   let businessDays = 0;
   const curDate = new Date(start);
-  while (curDate <= end) {
+  
+  // Loop dia a dia
+  while (curDate < end) {
     const dayOfWeek = curDate.getDay();
-    if (dayOfWeek !== 0 && dayOfWeek !== 6) { // 0 = Sun, 6 = Sat
+    // 0 = Domingo, 6 = Sábado
+    if (dayOfWeek !== 0 && dayOfWeek !== 6) { 
       businessDays++;
     }
     curDate.setDate(curDate.getDate() + 1);

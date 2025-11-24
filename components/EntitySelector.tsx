@@ -18,7 +18,7 @@ const AVAILABLE_ENTITIES: Entity[] = [
   },
   {
     id: 'filial_norte',
-    name: 'TESTE - XX',
+    name: 'TESTE',
     // Usando as MESMAS credenciais para demonstração, mas conceitualmente seria OUTRO projeto Supabase
     supabaseUrl: 'https://rulwzgytxzunqbzspwha.supabase.co',
     supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1bHd6Z3l0eHp1bnFienNwd2hhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM5NjEzODQsImV4cCI6MjA3OTUzNzM4NH0.Sz-Gl-Ly0L1c3VSRjnNJEJRibs874NfUgl8pODZ3Xb8',

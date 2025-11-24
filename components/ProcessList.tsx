@@ -29,9 +29,6 @@ export const ProcessList: React.FC<ProcessListProps> = ({
   onStartFilterChange,
   isArchivedTab
 }) => {
-  // A filtragem é feita no componente pai (App.tsx) para sincronizar com o Dashboard.
-  // 'processes' aqui já é a lista filtrada.
-
   return (
     <div className="bg-white dark:bg-slate-800 rounded-xl shadow border border-slate-200 dark:border-slate-700 flex flex-col">
       
@@ -94,7 +91,7 @@ export const ProcessList: React.FC<ProcessListProps> = ({
       </div>
 
       {/* Horizontal Scroll Container 
-          Mudança: max-h-[600px] para limitar altura (~10 linhas) e overflow-auto para scroll interno */}
+          Definida altura máxima de 600px (~10 linhas) e overflow-auto para habilitar scroll vertical interno */}
       <div className="overflow-auto max-h-[600px] w-full relative">
         <table className="w-full text-left border-collapse">
           <thead className="bg-slate-50 dark:bg-slate-900 text-xs uppercase text-slate-500 font-semibold sticky top-0 z-20 shadow-sm">
@@ -165,7 +162,7 @@ export const ProcessList: React.FC<ProcessListProps> = ({
                   <td className="p-3 whitespace-nowrap">{formatDate(p.termino_efetivo_planejamento)}</td>
                   <td className="p-3 whitespace-nowrap">
                     <div className="flex flex-col text-xs">
-                       <span>Total: {elapsed.total}d</span>
+                       <span className="font-medium text-slate-700 dark:text-slate-300">Total: {elapsed.total}d</span>
                        <span className="text-slate-400">Úteis: {elapsed.business}d</span>
                     </div>
                   </td>
